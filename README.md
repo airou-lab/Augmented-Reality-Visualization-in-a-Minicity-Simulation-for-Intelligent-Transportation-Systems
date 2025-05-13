@@ -80,7 +80,7 @@ Project Timeline
 
 This a step-by-step guide to carry out each of the four experiments of the AR mini-city project. These are written in a replicable, testbed-ready format for anyone looking to reproduce the results:
 
-1. Pedestrian Crossing and Car Yielding Scenarios
+1. Pedestrian Crossing and Car Yielding Scenarios (Augmented Reality based experiment)
 
 Goal: Test if AR-enhanced vehicles appropriately yield to crossing pedestrians under AR signal cues.
 
@@ -197,7 +197,7 @@ Steps:
      Edge case resolution success
 
 
-4. Temporal Coordination and Reaction Chain Validation
+4. Temporal Coordination and Reaction Chain Validation (Augmented Reality based experiment)
 
 Goal: Validate the timing sequence: signal → car reaction → pedestrian movement.
 
@@ -236,3 +236,94 @@ Steps:
    ΔT (pedestrian response after car stops)
    Deviations across trials (e.g., due to tracking jitter)
 
+
+The system requirements for each of the four AR mini-city experiments:
+
+1. Pedestrian Crossing and Car Yielding Scenarios
+
+Hardware Requirements:
+
+AR-compatible device: iPhone or iPad with ARKit support (A12 chip or later)
+Mac computer: For building to iOS (Xcode required)
+Physical testbed: Floor space with printed image markers (e.g., crosswalks)
+Router or local network: For multiplayer or signal sync if needed
+
+Software Requirements:
+
+Unity: Version 2021.3 LTS or newer (AR Foundation compatible)
+ARKit XR Plugin
+AR Foundation (v5.0+ recommended)
+Xcode (v14 or newer)
+Bezier Path plugin or custom spline controller
+FSM system (e.g., PlayMaker or custom C#)
+
+Environment Setup:
+
+Printed crosswalk image markers
+Physical space with enough room for car and pedestrian simulation (~3m x 3m minimum)
+Proper lighting for image marker detection
+AR camera setup for marker tracking
+
+2. Car Response to Traffic Signals
+
+Hardware Requirements:
+
+Same as above (AR-compatible iOS device + Mac with Xcode)
+Larger testbed area if multiple intersections are present
+Optional: Tripod mount for device if fixed-position tracking is used
+
+Software Requirements:
+
+Unity 2021.3+ with AR Foundation and ARKit XR Plugin
+Custom or FSM-driven traffic signal controller (Animator-based or script-driven)
+Raycasting system in cars to detect virtual traffic lights
+Optional: Global event manager for signal broadcasting
+
+Environment Setup:
+
+AR markers for traffic light anchoring
+Physical layout mimicking intersections
+AR signals positioned to match real-world testbed layout
+Sufficient lighting for AR marker stability
+
+3. Pedestrian and Car Interaction Logic
+
+Hardware Requirements:
+
+iOS device with ARKit support
+Physical crosswalk area with AR marker
+Dual-device setup (optional): separate AR devices for pedestrian vs. car agents
+
+Software Requirements:
+
+Unity 2021.3+ with ARKit & AR Foundation
+Collider zones and trigger events for crosswalks
+Real-time event handling (Unity Event system or custom pub/sub system)
+FSMs for both pedestrians and cars
+
+Environment Setup:
+
+Crosswalks with embedded AR markers
+Collider-enabled zones tied to AR spatial coordinates
+Setup for real-time pedestrian simulation (or external triggers)
+
+4. Temporal Coordination and Reaction Chain Validation
+
+Hardware Requirements:
+
+ARKit-supported iOS device
+High-precision timer or log system (device logger or networked sync)
+Optional: Additional sensors (LiDAR on iPad Pro) to enhance spatial accuracy
+
+Software Requirements:
+
+Unity Timeline system
+C# coroutines for timing control and delay simulation
+AR marker detection triggers to synchronize signal/pedestrian/car
+Logging system (e.g., Unity Analytics, custom timestamp logger)
+
+Environment Setup:
+
+Accurate alignment of AR anchors (calibrated testbed markers)
+Controlled lighting for consistent marker recognition
+Test area where pedestrian movement and vehicle motion can be logged clearly
